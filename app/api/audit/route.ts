@@ -72,7 +72,7 @@ export async function POST(request: Request) {
       .map((s) => s.trim())
       .filter(Boolean),
     replyTo: data.email,
-    subject: `New audit request: ${data.name}`,
+    subject: `Google Ads / Dubai : ${data.name}`,
     html,
     text: rows.map(([k, v]) => `${k}: ${v}`).join('\n'),
   });
