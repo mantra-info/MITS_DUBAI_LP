@@ -73,25 +73,27 @@ const services = [
 
 const industries = [
   {
-    img: 'ecommerce.webp',
+    img: 'Small_Business.jpg.jpeg',
     alt: 'Small business owner serving a customer',
     title: 'Small & medium businesses',
     text: 'Reach nearby customers searching for your services, and turn high-intent clicks into calls and enquiries.',
   },
   {
-    img: 'clinic.webp',
+    img: 'Clinics_Healthcare.jpg.jpeg',
     alt: 'Doctor with a stethoscope in a clinical setting',
     title: 'Clinics and healthcare',
     text: 'Turn local searches for treatments into booked appointments.',
   },
   {
-    img: 'business.webp',
+
+    img: 'B2B.jpg.jpeg',
     alt: 'Business professionals collaborating on laptops',
     title: 'B2B services',
     text: 'Reach decision makers who are searching for a supplier, and filter for qualified enquiries.',
   },
   {
-    img: 'fulfilment.webp',
+
+    img: 'E-Commerce.jpg.jpeg',
     alt: 'Warehouse shelves for ecommerce order fulfilment',
     title: 'Ecommerce',
     text: 'Reach ready-to-buy shoppers with Search, Shopping and Performance Max campaigns built around your sales goals.',
