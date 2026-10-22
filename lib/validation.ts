@@ -2,6 +2,28 @@ import { countries } from './countries';
 
 export const BUDGETS = ['Under AED 3,000', 'AED 3,000 to 10,000', 'Over AED 10,000', 'Not sure yet'];
 
+export const TRACKING_KEYS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'gclid',
+] as const;
+
+export type Tracking = Partial<Record<(typeof TRACKING_KEYS)[number], string>>;
+
+// Keeps only known tracking keys with short string values.
+export function cleanTracking(input: unknown): Tracking {
+  const out: Tracking = {};
+  if (!input || typeof input !== 'object') return out;
+  for (const key of TRACKING_KEYS) {
+    const value = (input as Record<string, unknown>)[key];
+    if (typeof value === 'string' && value.trim()) out[key] = value.trim().slice(0, 200);
+  }
+  return out;
+}
+
 export type AuditFields = {
   name: string;
   code: string;

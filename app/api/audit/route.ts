@@ -2,7 +2,16 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { countries } from '@/lib/countries';
 import { EMAIL } from '@/lib/site';
-import { normaliseWebsite, validateAudit, type AuditFields } from '@/lib/validation';
+import { cleanTracking, normaliseWebsite, validateAudit, type AuditFields } from '@/lib/validation';
+
+const TRACKING_LABELS = {
+  utm_source: 'UTM source',
+  utm_medium: 'UTM medium',
+  utm_campaign: 'UTM campaign',
+  utm_term: 'UTM term',
+  utm_content: 'UTM content',
+  gclid: 'Google click ID (gclid)',
+} as const;
 
 const DEFAULT_LEAD_RECIPIENTS = `${EMAIL},albie@mantrainfotechs.com`;
 
@@ -53,16 +62,28 @@ export async function POST(request: Request) {
     ['Monthly ad budget', data.budget || 'Not specified'],
   ];
 
-  const html = `
-    <h2 style="font-family:Arial,sans-serif">New free Google Ads audit request (Dubai)</h2>
+  const tracking = cleanTracking(body.tracking);
+  const trackingRows: [string, string][] = Object.keys(tracking).length
+    ? (Object.keys(TRACKING_LABELS) as (keyof typeof TRACKING_LABELS)[])
+        .filter((key) => tracking[key])
+        .map((key) => [TRACKING_LABELS[key], tracking[key]!])
+    : [['Source', 'Direct / no UTM parameters']];
+
+  const table = (list: [string, string][]) => `
     <table cellpadding="8" style="font-family:Arial,sans-serif;font-size:14px;border-collapse:collapse">
-      ${rows
+      ${list
         .map(
           ([k, v]) =>
             `<tr><td style="border-bottom:1px solid #e1e6ed;color:#626a76">${k}</td><td style="border-bottom:1px solid #e1e6ed"><b>${escape(v)}</b></td></tr>`,
         )
         .join('')}
     </table>`;
+
+  const html = `
+    <h2 style="font-family:Arial,sans-serif">New free Google Ads audit request (Dubai)</h2>
+    ${table(rows)}
+    <h3 style="font-family:Arial,sans-serif;margin-top:24px">Campaign tracking</h3>
+    ${table(trackingRows)}`;
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
@@ -74,7 +95,9 @@ export async function POST(request: Request) {
     replyTo: data.email,
     subject: `Google Ads / Dubai : ${data.name}`,
     html,
-    text: rows.map(([k, v]) => `${k}: ${v}`).join('\n'),
+    text: [...rows, ['', ''], ['Campaign tracking', ''], ...trackingRows]
+      .map(([k, v]) => (k ? `${k}: ${v}`.replace(/: $/, '') : ''))
+      .join('\n'),
   });
 
   if (error) {

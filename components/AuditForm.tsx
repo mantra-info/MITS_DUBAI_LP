@@ -1,19 +1,53 @@
 'use client';
 
-import { useState, type FocusEvent, type FormEvent } from 'react';
+import { useEffect, useState, type FocusEvent, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { countries } from '@/lib/countries';
 import { LANDING_PATH } from '@/lib/site';
-import { BUDGETS, validateAudit, validateField, type AuditErrors, type AuditFields } from '@/lib/validation';
+import {
+  BUDGETS,
+  TRACKING_KEYS,
+  cleanTracking,
+  validateAudit,
+  validateField,
+  type AuditErrors,
+  type AuditFields,
+  type Tracking,
+} from '@/lib/validation';
 import { ModalButton } from './InfoModal';
 
 const FIELD_ORDER: (keyof AuditFields)[] = ['name', 'code', 'phone', 'email', 'website'];
+const TRACKING_STORAGE_KEY = 'mits_tracking';
+
+function trackingFromUrl(): Tracking {
+  const params = new URLSearchParams(window.location.search);
+  return cleanTracking(Object.fromEntries(TRACKING_KEYS.map((key) => [key, params.get(key) ?? ''])));
+}
+
+// The landing URL's tracking wins; otherwise fall back to what this session stored earlier.
+function readTracking(): Tracking {
+  const fromUrl = trackingFromUrl();
+  if (Object.keys(fromUrl).length) return fromUrl;
+  try {
+    return cleanTracking(JSON.parse(sessionStorage.getItem(TRACKING_STORAGE_KEY) || '{}'));
+  } catch {
+    return {};
+  }
+}
 
 export default function AuditForm({ id }: { id: string }) {
   const router = useRouter();
   const [errors, setErrors] = useState<AuditErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const fromUrl = trackingFromUrl();
+    if (!Object.keys(fromUrl).length) return;
+    try {
+      sessionStorage.setItem(TRACKING_STORAGE_KEY, JSON.stringify(fromUrl));
+    } catch {}
+  }, []);
 
   const readForm = (form: HTMLFormElement): AuditFields => {
     const data = new FormData(form);
@@ -68,7 +102,11 @@ export default function AuditForm({ id }: { id: string }) {
       const res = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, company: String(new FormData(form).get('company') ?? '') }),
+        body: JSON.stringify({
+          ...fields,
+          company: String(new FormData(form).get('company') ?? ''),
+          tracking: readTracking(),
+        }),
       });
       const result = await res.json().catch(() => ({}));
       if (!res.ok) {
