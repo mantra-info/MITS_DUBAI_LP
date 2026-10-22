@@ -54,7 +54,7 @@ export default function ThankYou() {
 
           <div className="thank-you-actions">
             <a className="btn" href={WHATSAPP_URL} target="_blank" rel="noopener">
-              Chat on WhatsApp <span>↗</span>
+              Chat on WhatsApp
             </a>
             <Link className="btn outline" href={LANDING_PATH}>
               Back to home
@@ -62,7 +62,7 @@ export default function ThankYou() {
           </div>
 
           <p className="fine">
-            Need to add something? Call <a href={PHONE_HREF}>{PHONE_DISPLAY}</a> or email{' '}
+            Need to add something? email{' '}
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
           </p>
         </div>

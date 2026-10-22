@@ -174,7 +174,7 @@ export default function Home() {
           <a href="#reviews">Client stories</a>
         </nav>
         <a className="btn small" href="#hero-audit">
-          Get a Free Audit <span>↗</span>
+          Get a Free Audit
         </a>
       </header>
 
@@ -205,7 +205,7 @@ export default function Home() {
               <li>Plain monthly reports: leads, cost per lead and what we changed</li>
             </ul>
             <a className="wa-link" href={WHATSAPP_URL} target="_blank" rel="noopener">
-              ◉ &nbsp; Chat on WhatsApp <span>↗</span>
+              ◉ &nbsp; Chat on WhatsApp
             </a>
             <div className="hero-proof">
               <img src="/assets/partner.svg" alt="Google Partner" />
@@ -242,7 +242,7 @@ export default function Home() {
                 simple way to enquire.
               </p>
               <a className="btn" href="#audit">
-                Find My Growth Opportunities ↗
+                Find My Growth Opportunities
               </a>
               <div className="opportunity-note">For SMBs, clinics, B2B services and online stores.</div>
             </div>
@@ -265,7 +265,7 @@ export default function Home() {
                   <br />A direct route to your team.
                 </p>
                 <div className="ad-action">
-                  Enquire now <span>↗</span>
+                  Enquire now
                 </div>
               </div>
               <div className="journey-steps">
@@ -302,7 +302,7 @@ export default function Home() {
             ))}
           </div>
           <a className="text-link" href="#audit">
-            Find where your budget leaks <span>↗</span>
+            Find where your budget leaks
           </a>
         </section>
 
@@ -339,7 +339,7 @@ export default function Home() {
                 </h3>
                 <p>Get a free audit and we will tell you where to start.</p>
                 <a className="btn white" href="#audit">
-                  Get My Free Audit ↗
+                  Get My Free Audit
                 </a>
               </article>
             </div>
@@ -377,7 +377,7 @@ export default function Home() {
           <div className="industry-next">
             <p>Let’s find the right campaign for your business.</p>
             <a className="btn" href="#audit">
-              Get My Free Audit <span>↗</span>
+              Get My Free Audit
             </a>
           </div>
         </section>
@@ -430,7 +430,7 @@ export default function Home() {
             ))}
           </div>
           <a className="text-link" href="#audit">
-            Get a measurement plan for my business ↗
+            Get a measurement plan for my business
           </a>
         </section>
 
@@ -452,7 +452,7 @@ export default function Home() {
             <div className="trust-grid">
               <figure className="trust-photo">
                 <img
-                  src="/assets/dubai.webp"
+                  src="/assets/Dubai.jpg.jpeg"
                   alt="Dubai Marina waterfront and skyline"
                   width={1200}
                   height={760}
@@ -489,8 +489,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="trust-contact">
-                  <a href={PHONE_HREF}>{PHONE_DISPLAY} ↗</a>
-                  <a href={`mailto:${EMAIL}`}>{EMAIL} ↗</a>
+                  <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
                   <span>Infopark, Kakkanad, Kochi, Kerala, India</span>
                 </div>
               </div>
@@ -498,7 +497,7 @@ export default function Home() {
             <div className="trust-bottom">
               <p>Only 1.5 hours apart. Working towards the same goals.</p>
               <a className="btn" href="#audit">
-                Get My Free Audit ↗
+                Get My Free Audit
               </a>
             </div>
           </div>
@@ -568,7 +567,7 @@ export default function Home() {
                 <h3>Prefer a conversation?</h3>
                 <p>Arrange a strategy call during UAE business hours. All times discussed in GST (UTC+4).</p>
                 <a className="text-link" href={WHATSAPP_URL} target="_blank" rel="noopener">
-                  Arrange a call on WhatsApp ↗
+                  Arrange a call on WhatsApp
                 </a>
                 <small>Choose a suitable UAE time with our team on WhatsApp.</small>
               </div>
@@ -615,8 +614,7 @@ export default function Home() {
           </div>
           <div>
             <h3>Let’s talk growth.</h3>
-            <a href={PHONE_HREF}>{PHONE_DISPLAY} ↗</a>
-            <a href={`mailto:${EMAIL}`}>{EMAIL} ↗</a>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </div>
           <div>
             <h3>From Kochi. For Dubai.</h3>
@@ -626,7 +624,7 @@ export default function Home() {
               Kochi, Kerala, India
             </p>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener">
-              Chat on WhatsApp ↗
+              Chat on WhatsApp
             </a>
           </div>
         </div>
@@ -644,7 +642,7 @@ export default function Home() {
           WhatsApp
         </a>
         <a className="btn" href="#hero-audit">
-          Get My Free Audit ↗
+          Get My Free Audit
         </a>
       </div>
     </ModalProvider>

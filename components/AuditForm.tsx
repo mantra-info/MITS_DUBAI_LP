@@ -235,7 +235,7 @@ export default function AuditForm({ id }: { id: string }) {
         </div>
       </fieldset>
       <button className="btn full" type="submit" disabled={status === 'sending'} aria-busy={status === 'sending'}>
-        {status === 'sending' ? 'Sending…' : 'Get My Free Audit'} <span>↗</span>
+        {status === 'sending' ? 'Sending…' : 'Get My Free Audit'}
       </button>
       <p className="fine">
         Your details stay private. <ModalButton kind="privacy">Privacy information</ModalButton>

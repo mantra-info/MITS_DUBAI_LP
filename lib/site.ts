@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://ads.mantrainfotechs.com';
 export const LANDING_PATH = '/google-ads-agency-dubai';
 
-export const WHATSAPP_NUMBER = '919249089264';
+export const WHATSAPP_NUMBER = '918129402530';
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20MITS%2C%20I%27m%20interested%20in%20Google%20Ads%20for%20my%20Dubai%20business.`;
 export const PHONE_DISPLAY = '+91 92490 89264';
 export const PHONE_HREF = 'tel:+919249089264';

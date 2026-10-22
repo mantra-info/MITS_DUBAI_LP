@@ -2,7 +2,7 @@
 export default function Logo() {
   return (
     <span className="logo-crop">
-      <img src="/assets/mits-logo.jpg" alt="mits" />
+      <img src="/assets/mits-logo-wordmark.png" alt="mits" width={440} height={184} />
     </span>
   );
 }
