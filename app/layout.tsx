@@ -5,7 +5,6 @@ import './globals.css';
 
 const GTM_ID = 'GTM-MXXLKK8N';
 
-
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
