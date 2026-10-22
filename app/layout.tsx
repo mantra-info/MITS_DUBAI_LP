@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import { LANDING_PATH, SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const GTM_ID = 'GTM-MXXLKK8N';
@@ -12,6 +13,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: LANDING_PATH },
   title: 'Google Ads Agency for Dubai Businesses | Mantra Infotechs',
   description:
     'Google Ads management for Dubai businesses by Mantra Infotechs. Search, Performance Max, Shopping and conversion tracking. Request a free account audit.',

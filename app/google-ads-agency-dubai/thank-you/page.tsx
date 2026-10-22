@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from '@/lib/site';
+import { EMAIL, LANDING_PATH, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Thank You | Mantra Infotechs',
@@ -19,7 +19,7 @@ export default function ThankYou() {
   return (
     <>
       <header className="header wrap">
-        <Link href="/" className="brand" aria-label="MITS home">
+        <Link href={LANDING_PATH} className="brand" aria-label="MITS home">
           <Logo />
         </Link>
       </header>
@@ -56,7 +56,7 @@ export default function ThankYou() {
             <a className="btn" href={WHATSAPP_URL} target="_blank" rel="noopener">
               Chat on WhatsApp <span>↗</span>
             </a>
-            <Link className="btn outline" href="/">
+            <Link className="btn outline" href={LANDING_PATH}>
               Back to home
             </Link>
           </div>

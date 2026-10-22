@@ -3,6 +3,7 @@
 import { useState, type FocusEvent, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { countries } from '@/lib/countries';
+import { LANDING_PATH } from '@/lib/site';
 import { BUDGETS, validateAudit, validateField, type AuditErrors, type AuditFields } from '@/lib/validation';
 import { ModalButton } from './InfoModal';
 
@@ -79,7 +80,7 @@ export default function AuditForm({ id }: { id: string }) {
       }
       const w = window as typeof window & { dataLayer?: Record<string, unknown>[] };
       (w.dataLayer ||= []).push({ event: 'generate_lead', form_id: id, budget: fields.budget || 'Not specified' });
-      router.push('/thank-you');
+      router.push(`${LANDING_PATH}/thank-you`);
     } catch (err) {
       setStatus('error');
       setMessage(
